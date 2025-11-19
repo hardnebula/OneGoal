@@ -8,6 +8,11 @@
     "scheme": "onegoal",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+    "extra": {
+      "eas": {
+        "projectId": "07392fee-c784-4445-ad33-9f645009076c"
+      }
+    },
     "ios": {
       "supportsTablet": true
     },

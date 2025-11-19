@@ -1,50 +1,61 @@
-# Welcome to your Expo app 👋
+# OneGoal iOS App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A minimal, high-quality iOS habit tracker focused on one habit at a time.
 
-## Get started
+## Features
 
-1. Install dependencies
+- **Single Habit Focus**: Track one habit per cycle (7, 14, 21, or 30 days)
+- **Simple Daily Check-in**: Tap a button to mark completion for the day
+- **Progress Visualization**: Beautiful circular progress ring showing your journey
+- **Daily Reminders**: Optional notifications to keep you on track
+- **Statistics**: Track your streak and completion rate
+- **Clean Design**: Minimal UI with lots of white space and SF Pro fonts
 
-   ```bash
-   npm install
-   ```
+## Project Structure
 
-2. Start the app
-
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```
+OneGoal/
+├── OneGoalApp.swift          # Main app entry point
+├── Models/
+│   └── OneGoalViewModel.swift # Core view model with persistence
+├── Views/
+│   ├── ContentView.swift      # Root view (onboarding/main app)
+│   ├── HomeView.swift         # Main screen with progress ring
+│   ├── OnboardingView.swift   # Onboarding flow
+│   ├── MainTabView.swift      # Tab navigation
+│   ├── RemindersView.swift    # Notification settings
+│   ├── StatsView.swift        # Statistics screen
+│   ├── SettingsView.swift     # App settings
+│   ├── EndOfCycleView.swift   # Completion celebration
+│   └── GoalPickerView.swift   # Goal selection screen
+└── Utilities/
+    └── Theme.swift            # App theming
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Requirements
 
-## Learn more
+- iOS 17.0+
+- Xcode 15.0+
+- Swift 5.9+
 
-To learn more about developing your project with Expo, look at the following resources:
+## Setup
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+1. Open the project in Xcode
+2. Build and run on a simulator or device
+3. Complete the onboarding flow to get started
 
-## Join the community
+## Architecture
 
-Join our community of developers creating universal apps.
+- **MVVM**: Lightweight Model-View-ViewModel pattern
+- **Persistence**: Uses `AppStorage` and `UserDefaults` for simple state management (prepared for CoreData migration later)
+- **SwiftUI**: Modern declarative UI framework
+- **No Dependencies**: Pure Swift/SwiftUI implementation
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Future Enhancements
+
+- CoreData migration for more robust persistence
+- Subscription/paywall integration for OneGoal Pro
+- Analytics integration
+- iCloud sync
+- Widget support
+- Apple Watch companion app
