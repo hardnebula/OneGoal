@@ -1,4 +1,5 @@
 import { Logo } from '@/components/Logo';
+import { Colors } from '@/constants/theme';
 import { useOneGoal } from '@/store/OneGoalStore';
 import * as Haptics from 'expo-haptics';
 import { useRouter } from 'expo-router';
@@ -84,10 +85,12 @@ export default function HomeScreen() {
 
         <View style={styles.content}>
           <View style={styles.cycleInfo}>
+            {habitName && habitName.trim() ? (
+              <Text style={styles.habitName}>{habitName}</Text>
+            ) : null}
             <Text style={styles.dayText}>
               Day {Math.min(currentDay, totalDays)} of {totalDays}
             </Text>
-            <Text style={styles.habitName}>{habitName}</Text>
           </View>
 
           <View style={styles.progressContainer}>
@@ -98,7 +101,7 @@ export default function HomeScreen() {
                   cx={100}
                   cy={100}
                   r={radius}
-                  stroke="#4A7AFF33"
+                  stroke={Colors.dark.tint + '33'}
                   strokeWidth={12}
                   fill="none"
                 />
@@ -107,7 +110,7 @@ export default function HomeScreen() {
                   cx={100}
                   cy={100}
                   r={radius}
-                  stroke="#4A7AFF"
+                  stroke={Colors.dark.tint}
                   strokeWidth={12}
                   fill="none"
                   strokeDasharray={circumference}
@@ -150,7 +153,7 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F7F7F7',
+    backgroundColor: Colors.dark.background,
   },
   scrollContent: {
     flexGrow: 1,
@@ -170,7 +173,7 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontSize: 20,
     fontWeight: '600',
-    color: '#000',
+    color: Colors.dark.text,
   },
   content: {
     flex: 1,
@@ -181,17 +184,21 @@ const styles = StyleSheet.create({
   },
   cycleInfo: {
     alignItems: 'center',
-    gap: 8,
+    gap: 12,
+    marginBottom: 8,
+  },
+  habitName: {
+    fontSize: 32,
+    fontWeight: '700',
+    color: Colors.dark.text,
+    textAlign: 'center',
+    marginBottom: 8,
+    letterSpacing: 0.5,
   },
   dayText: {
     fontSize: 17,
-    color: '#666',
-  },
-  habitName: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: '#000',
-    textAlign: 'center',
+    color: Colors.dark.icon,
+    fontWeight: '400',
   },
   progressContainer: {
     alignItems: 'center',
@@ -214,11 +221,11 @@ const styles = StyleSheet.create({
   progressNumber: {
     fontSize: 48,
     fontWeight: '600',
-    color: '#000',
+    color: Colors.dark.text,
   },
   progressTotal: {
     fontSize: 20,
-    color: '#666',
+    color: Colors.dark.icon,
   },
   completionSection: {
     alignItems: 'center',
@@ -228,12 +235,12 @@ const styles = StyleSheet.create({
     width: 80,
     height: 80,
     borderRadius: 40,
-    backgroundColor: '#4A7AFF',
+    backgroundColor: Colors.dark.tint,
     alignItems: 'center',
     justifyContent: 'center',
   },
   completionButtonDisabled: {
-    backgroundColor: '#4A7AFF33',
+    backgroundColor: Colors.dark.tint + '33',
   },
   completionButtonIcon: {
     fontSize: 32,
@@ -242,7 +249,7 @@ const styles = StyleSheet.create({
   },
   completionText: {
     fontSize: 15,
-    color: '#666',
+    color: Colors.dark.icon,
     textAlign: 'center',
   },
   celebrationContent: {
@@ -258,16 +265,16 @@ const styles = StyleSheet.create({
   celebrationTitle: {
     fontSize: 28,
     fontWeight: '600',
-    color: '#000',
+    color: Colors.dark.text,
     textAlign: 'center',
   },
   celebrationSubtitle: {
     fontSize: 17,
-    color: '#666',
+    color: Colors.dark.icon,
     textAlign: 'center',
   },
   button: {
-    backgroundColor: '#4A7AFF',
+    backgroundColor: Colors.dark.tint,
     borderRadius: 12,
     padding: 16,
     width: '100%',

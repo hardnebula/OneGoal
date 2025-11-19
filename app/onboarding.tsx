@@ -92,7 +92,7 @@ export default function OnboardingScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F7F7F7',
+    backgroundColor: Colors.dark.background,
     padding: 32,
     justifyContent: 'space-between',
   },
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: 20,
-    color: '#666',
+    color: Colors.dark.icon,
   },
   valuePoints: {
     gap: 24,
@@ -129,23 +129,23 @@ const styles = StyleSheet.create({
   },
   valueText: {
     fontSize: 17,
-    color: '#000',
+    color: Colors.dark.text,
     flex: 1,
   },
   inputTitle: {
     fontSize: 28,
     fontWeight: '600',
-    color: '#000',
+    color: Colors.dark.text,
     marginBottom: 16,
     textAlign: 'center',
   },
   input: {
     width: '100%',
-    backgroundColor: '#E5E5E5',
+    backgroundColor: Colors.dark.card + '40',
     borderRadius: 12,
     padding: 16,
     fontSize: 17,
-    color: '#000',
+    color: Colors.dark.text,
   },
   button: {
     backgroundColor: '#4A7AFF',
@@ -154,10 +154,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   buttonDisabled: {
-    backgroundColor: '#999',
+    backgroundColor: Colors.dark.icon + '80',
   },
   buttonText: {
-    color: '#FFF',
+    color: Colors.dark.card,
     fontSize: 17,
     fontWeight: '600',
   },

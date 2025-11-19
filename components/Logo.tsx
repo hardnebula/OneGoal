@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 20,
     fontWeight: '600',
-    color: '#000',
+    color: '#FFFFFF',
     letterSpacing: 0.5,
     textAlign: 'center',
   },

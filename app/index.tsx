@@ -1,6 +1,7 @@
 import { Redirect } from 'expo-router';
 import { View, ActivityIndicator } from 'react-native';
 import { useOneGoal } from '@/store/OneGoalStore';
+import { Colors } from '@/constants/theme';
 
 export default function Index() {
   const { hasCompletedOnboarding, habitName, isLoading } = useOneGoal();
@@ -8,8 +9,8 @@ export default function Index() {
   // Show loading while checking storage
   if (isLoading) {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#F7F7F7' }}>
-        <ActivityIndicator size="large" color="#4A7AFF" />
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: Colors.dark.background }}>
+        <ActivityIndicator size="large" color={Colors.dark.tint} />
       </View>
     );
   }

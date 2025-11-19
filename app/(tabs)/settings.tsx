@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, Switch, ScrollView, Linking, TouchableOpacity } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Logo } from '@/components/Logo';
+import { useOneGoal } from '@/store/OneGoalStore'; // Importar el hook
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, { useEffect, useState } from 'react';
+import { Alert, Linking, ScrollView, StyleSheet, Switch, Text, TouchableOpacity, View } from 'react-native';
+import { Colors } from '@/constants/theme';
 
 export default function SettingsScreen() {
+  const { isPro, setProStatus } = useOneGoal(); // Usar el estado global
   const [hapticFeedbackEnabled, setHapticFeedbackEnabled] = useState(true);
 
   useEffect(() => {
@@ -31,6 +34,13 @@ export default function SettingsScreen() {
     setHapticFeedbackEnabled(enabled);
     saveSettings(enabled);
   };
+  
+  const handleProToggle = (enabled: boolean) => {
+    setProStatus(enabled);
+    if (enabled) {
+        Alert.alert("Pro Unlocked! 🎉", "You can now select custom cycle durations.");
+    }
+  };
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -42,13 +52,29 @@ export default function SettingsScreen() {
       <View style={styles.content}>
         <View style={styles.section}>
           <Text style={styles.sectionHeader}>Premium</Text>
-          <TouchableOpacity style={styles.proRow}>
+          <TouchableOpacity style={styles.proRow} disabled={isPro}>
             <View style={styles.proContent}>
               <Text style={styles.proTitle}>OneGoal Pro</Text>
-              <Text style={styles.proSubtitle}>Unlock longer cycles and more insights.</Text>
+              <Text style={styles.proSubtitle}>
+                {isPro ? "Plan active. Thanks for your support!" : "Unlock longer cycles and more insights."}
+              </Text>
             </View>
-            <Text style={styles.chevron}>›</Text>
+             {!isPro && <Text style={styles.chevron}>›</Text>}
+             {isPro && <Text style={{fontSize: 16}}>✅</Text>}
           </TouchableOpacity>
+        </View>
+        
+        {/* DEV SECTION - REMOVE IN PRODUCTION */}
+        <View style={styles.section}>
+            <Text style={styles.sectionHeader}>Developer Options</Text>
+            <View style={styles.settingRow}>
+                <Text style={styles.settingLabel}>Simulate Pro Status</Text>
+                <Switch
+                value={isPro}
+                onValueChange={handleProToggle}
+                trackColor={{ false: Colors.dark.card + '40', true: '#4A7AFF' }}
+                />
+            </View>
         </View>
 
         <View style={styles.section}>
@@ -58,7 +84,7 @@ export default function SettingsScreen() {
             <Switch
               value={hapticFeedbackEnabled}
               onValueChange={handleHapticToggle}
-              trackColor={{ false: '#E5E5E5', true: '#4A7AFF' }}
+              trackColor={{ false: Colors.dark.card + '40', true: '#4A7AFF' }}
             />
           </View>
         </View>
@@ -82,9 +108,10 @@ export default function SettingsScreen() {
 }
 
 const styles = StyleSheet.create({
+    // ... (mismos estilos de antes)
   container: {
     flexGrow: 1,
-    backgroundColor: '#F7F7F7',
+    backgroundColor: Colors.dark.background,
   },
   header: {
     paddingTop: 60,
@@ -101,14 +128,14 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontSize: 20,
     fontWeight: '600',
-    color: '#000',
+    color: Colors.dark.text,
   },
   content: {
     padding: 20,
     gap: 24,
   },
   section: {
-    backgroundColor: '#FFF',
+    backgroundColor: Colors.dark.card,
     borderRadius: 12,
     padding: 16,
     gap: 12,
@@ -116,7 +143,7 @@ const styles = StyleSheet.create({
   sectionHeader: {
     fontSize: 13,
     fontWeight: '600',
-    color: '#666',
+    color: Colors.dark.icon,
     textTransform: 'uppercase',
     marginBottom: 4,
   },
@@ -131,11 +158,11 @@ const styles = StyleSheet.create({
   },
   proTitle: {
     fontSize: 17,
-    color: '#000',
+    color: Colors.dark.text,
   },
   proSubtitle: {
     fontSize: 13,
-    color: '#666',
+    color: Colors.dark.icon,
   },
   settingRow: {
     flexDirection: 'row',
@@ -144,7 +171,7 @@ const styles = StyleSheet.create({
   },
   settingLabel: {
     fontSize: 17,
-    color: '#000',
+    color: Colors.dark.text,
   },
   linkRow: {
     flexDirection: 'row',
@@ -154,11 +181,10 @@ const styles = StyleSheet.create({
   },
   linkText: {
     fontSize: 17,
-    color: '#000',
+    color: Colors.dark.text,
   },
   chevron: {
     fontSize: 20,
-    color: '#666',
+    color: Colors.dark.icon,
   },
 });
-

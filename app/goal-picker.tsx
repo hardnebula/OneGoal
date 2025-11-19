@@ -2,6 +2,7 @@ import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, TextInput } from 'react-native';
 import { useOneGoal } from '@/store/OneGoalStore';
+import { Colors } from '@/constants/theme';
 
 const suggestedGoals = [
   { name: 'Drink Water', emoji: '💧' },
@@ -91,7 +92,7 @@ export default function GoalPickerScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F7F7F7',
+    backgroundColor: Colors.dark.background,
   },
   header: {
     paddingTop: 60,
@@ -104,7 +105,7 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontSize: 20,
     fontWeight: '600',
-    color: '#000',
+    color: Colors.dark.text,
   },
   cancelButton: {
     fontSize: 17,
@@ -120,7 +121,7 @@ const styles = StyleSheet.create({
   goalButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#FFF',
+    backgroundColor: Colors.dark.card,
     borderRadius: 12,
     padding: 16,
     gap: 16,
@@ -131,11 +132,11 @@ const styles = StyleSheet.create({
   goalName: {
     flex: 1,
     fontSize: 17,
-    color: '#000',
+    color: Colors.dark.text,
   },
   chevron: {
     fontSize: 20,
-    color: '#666',
+    color: Colors.dark.icon,
   },
   customContent: {
     flex: 1,
@@ -146,14 +147,14 @@ const styles = StyleSheet.create({
   inputTitle: {
     fontSize: 24,
     fontWeight: '600',
-    color: '#000',
+    color: Colors.dark.text,
   },
   input: {
-    backgroundColor: '#E5E5E5',
+    backgroundColor: Colors.dark.card + '40',
     borderRadius: 12,
     padding: 16,
     fontSize: 17,
-    color: '#000',
+    color: Colors.dark.text,
   },
   button: {
     backgroundColor: '#4A7AFF',
@@ -162,10 +163,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   buttonDisabled: {
-    backgroundColor: '#999',
+    backgroundColor: Colors.dark.icon + '80',
   },
   buttonText: {
-    color: '#FFF',
+    color: Colors.dark.card,
     fontSize: 17,
     fontWeight: '600',
   },

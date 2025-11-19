@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { useOneGoal } from '@/store/OneGoalStore';
 import { Logo } from '@/components/Logo';
+import { Colors } from '@/constants/theme';
 
 export default function StatsScreen() {
   const { currentDay, totalDays, progress } = useOneGoal();
@@ -51,7 +52,7 @@ export default function StatsScreen() {
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    backgroundColor: '#F7F7F7',
+    backgroundColor: Colors.dark.background,
   },
   header: {
     paddingTop: 60,
@@ -68,14 +69,14 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontSize: 20,
     fontWeight: '600',
-    color: '#000',
+    color: Colors.dark.text,
   },
   content: {
     padding: 20,
     gap: 24,
   },
   section: {
-    backgroundColor: '#FFF',
+    backgroundColor: Colors.dark.card,
     borderRadius: 12,
     padding: 16,
     gap: 12,
@@ -83,11 +84,11 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 20,
     fontWeight: '600',
-    color: '#000',
+    color: Colors.dark.text,
   },
   progressBar: {
     height: 8,
-    backgroundColor: '#E5E5E5',
+    backgroundColor: Colors.dark.card + '40',
     borderRadius: 4,
     overflow: 'hidden',
   },
@@ -98,7 +99,7 @@ const styles = StyleSheet.create({
   },
   progressText: {
     fontSize: 15,
-    color: '#666',
+    color: Colors.dark.icon,
   },
   statsGrid: {
     flexDirection: 'row',
@@ -106,7 +107,7 @@ const styles = StyleSheet.create({
   },
   statCard: {
     flex: 1,
-    backgroundColor: '#FFF',
+    backgroundColor: Colors.dark.card,
     borderRadius: 12,
     padding: 16,
     alignItems: 'center',
@@ -118,15 +119,15 @@ const styles = StyleSheet.create({
   statValue: {
     fontSize: 32,
     fontWeight: 'bold',
-    color: '#000',
+    color: Colors.dark.text,
   },
   statLabel: {
     fontSize: 13,
-    color: '#666',
+    color: Colors.dark.icon,
   },
   emptyText: {
     fontSize: 15,
-    color: '#666',
+    color: Colors.dark.icon,
   },
 });
 

@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Switch, ScrollView, Platform, Alert } from 'rea
 import * as Notifications from 'expo-notifications';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Logo } from '@/components/Logo';
+import { Colors } from '@/constants/theme';
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -105,7 +106,7 @@ export default function RemindersScreen() {
             <Switch
               value={dailyReminderEnabled}
               onValueChange={handleToggle}
-              trackColor={{ false: '#E5E5E5', true: '#4A7AFF' }}
+              trackColor={{ false: Colors.dark.card + '40', true: '#4A7AFF' }}
             />
           </View>
           {dailyReminderEnabled && (
@@ -128,7 +129,7 @@ export default function RemindersScreen() {
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    backgroundColor: '#F7F7F7',
+    backgroundColor: Colors.dark.background,
   },
   header: {
     paddingTop: 60,
@@ -145,13 +146,13 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontSize: 20,
     fontWeight: '600',
-    color: '#000',
+    color: Colors.dark.text,
   },
   content: {
     padding: 20,
   },
   section: {
-    backgroundColor: '#FFF',
+    backgroundColor: Colors.dark.card,
     borderRadius: 12,
     padding: 16,
     gap: 16,
@@ -163,23 +164,23 @@ const styles = StyleSheet.create({
   },
   settingLabel: {
     fontSize: 17,
-    color: '#000',
+    color: Colors.dark.text,
   },
   timePicker: {
     gap: 8,
   },
   timeLabel: {
     fontSize: 17,
-    color: '#000',
+    color: Colors.dark.text,
   },
   timeHint: {
     fontSize: 13,
-    color: '#666',
+    color: Colors.dark.icon,
     fontStyle: 'italic',
   },
   footer: {
     fontSize: 13,
-    color: '#666',
+    color: Colors.dark.icon,
   },
 });
 
